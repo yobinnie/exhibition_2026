@@ -1,0 +1,62 @@
+/* Relative track widths mirror the two originals' aspect ratios. One shared
+   width budget therefore produces equal image heights at every breakpoint. */
+#project-gallery.is-graphic-gallery {
+  display: grid;
+  width: min(100%, 920px);
+  max-width: 100%;
+  margin-inline: auto;
+  grid-template-columns: minmax(0, 1.415342087fr) minmax(0, .708053691fr);
+  align-items: start;
+  gap: clamp(42px, 5.1vw, 70px) clamp(30px, 3.3vw, 44px);
+}
+#project-gallery.is-graphic-gallery > .work-card[data-project="catgel-catvil"] {
+  --art-ratio: 2048 / 1447; grid-column: 1; grid-row: 1;
+}
+#project-gallery.is-graphic-gallery > .work-card[data-project="dot-game-cat"] {
+  --art-ratio: 1055 / 1490; grid-column: 2; grid-row: 1;
+}
+#project-gallery.is-graphic-gallery > .work-card[data-project="kyobo"] {
+  --art-ratio: 2000 / 800; grid-column: 1 / -1; grid-row: 2;
+  width: 78%; justify-self: end;
+}
+#project-gallery.is-graphic-gallery .work-card .print-frame,
+#project-gallery.is-graphic-gallery .work-card .work-image {
+  display: block;
+  width: 100%; max-width: 100%; height: auto; margin: 0;
+  aspect-ratio: var(--art-ratio);
+  overflow: visible; background: transparent;
+}
+#project-gallery.is-graphic-gallery .work-card .work-image .project-cover {
+  display: block; width: 100%; height: auto;
+  aspect-ratio: var(--art-ratio); object-fit: contain;
+  transform: scale(1); transition: transform .4s;
+}
+/* Match the other category cards without changing the originals' proportions. */
+#project-gallery.is-graphic-gallery .work-card:is(:hover, :focus-visible) .work-image .project-cover {
+  transform: scale(1.016);
+}
+@media (prefers-reduced-motion: reduce) {
+  #project-gallery.is-graphic-gallery .work-card .work-image .project-cover {
+    transition: none;
+  }
+}
+@media (max-width: 640px) {
+  #project-gallery.is-graphic-gallery {
+    width: 94%;
+    gap: 36px clamp(17px, 4.6vw, 20px);
+  }
+  #project-gallery.is-graphic-gallery .work-caption {
+    gap: 4px; padding-top: 9px;
+  }
+  #project-gallery.is-graphic-gallery .work-caption h3 {
+    font-size: clamp(13px, 3.3vw, 16px); line-height: 1.23;
+    overflow-wrap: anywhere;
+  }
+  #project-gallery.is-graphic-gallery .project-open-mark { font-size: 13px; }
+  #project-gallery.is-graphic-gallery .project-card-meta {
+    flex-wrap: wrap; gap: 2px 6px;
+  }
+  #project-gallery.is-graphic-gallery .project-card-meta > * {
+    font-size: 10px;
+  }
+}

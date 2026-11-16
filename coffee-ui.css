@@ -1,0 +1,189 @@
+/* Porcelain controls, uncoated paper and the same deep burgundy as the film. */
+:root {
+  --wine: #690b24;
+  --ivory: #f5f1e7;
+  --cup-ink: #201c1a;
+  --profile-paper: #eef5f9;
+  --paper: var(--profile-paper);
+}
+.site-header {
+  background: transparent; border-bottom: 0; box-shadow: none;
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+}
+.profile-section { background: var(--profile-paper); }
+.site-header .wordmark, .site-header .brand-op { transition: color 180ms ease; }
+.site-header.on-coffee .wordmark, .site-header.on-coffee .brand-op { color: var(--ivory); }
+.site-header nav { gap: clamp(19px, 2.1vw, 34px); }
+
+/* A handle belongs to the action, not to the artwork or paper it opens. */
+:is(.site-header nav a, .menu-toggle,
+    .submit, .project-visit, .related-project-link, .arrow-up,
+    .delete-note, .paper-tone) {
+  position: relative; isolation: isolate;
+  background: #fff; color: var(--cup-ink);
+  border: 0;
+  border-radius: 7px 7px 11px 11px;
+  box-shadow: none;
+  font-weight: 500; text-decoration: none;
+  transition: transform 180ms ease;
+}
+:is(.site-header nav a, .menu-toggle,
+    .submit, .project-visit, .related-project-link, .arrow-up,
+    .delete-note, .paper-tone)::after {
+  content: ''; position: absolute; z-index: -1;
+  inset: 22% -9px 25% auto; width: 13px; height: auto;
+  border: 3px solid #fff; border-left: 0;
+  border-radius: 0 8px 9px 0;
+  background: transparent; outline: none; box-shadow: none;
+  pointer-events: none;
+}
+:is(.site-header nav a, .submit,
+    .project-visit, .related-project-link, .delete-note):hover {
+  background: #fff; color: var(--cup-ink); transform: translateY(-2px);
+  box-shadow: none;
+}
+.site-header nav a.active {
+  color: var(--wine); background: #fff; font-weight: 650;
+  border: 0; box-shadow: none;
+}
+.site-header nav a { min-height: 33px; padding: 4px 13px; font-size: 11px; }
+.profile-tabs { position: relative; z-index: 1; mix-blend-mode: difference; }
+.work-heading { display: grid; grid-template-columns: auto 1fr; align-items: end; gap: 24px; }
+.work-heading h2 { justify-self: end; text-align: right; }
+#work-title i, #notes-title i, #contact-title i { font-style: italic; font-weight: 400; }
+.filters { gap: clamp(8px, 1.2vw, 18px); margin: 0; }
+.filters button {
+  min-height: 44px; padding: 0 7px;
+  border: 0; border-radius: 0; background: transparent; box-shadow: none;
+  color: #a5a5a2; font-size: 15px; font-weight: 450;
+  letter-spacing: 0; white-space: nowrap; text-transform: uppercase;
+  transition: color 150ms ease;
+}
+.filters button::before, .filters button::after { content: none; }
+.filters button.selected,
+.filters button:hover,
+.filters button:not(.selected):hover {
+  border: 0; background: transparent; box-shadow: none;
+  color: #fff; transform: none;
+}
+.filters button.selected { font-weight: 650; }
+.submit, .project-visit, .related-project-link { min-height: 42px; padding: 10px 19px; gap: 14px; }
+.close-dialog.close-dialog {
+  position: sticky; top: 8px; margin: 8px 12px 0 auto;
+  background: transparent; color: #fff; border: 0; border-radius: 0;
+  box-shadow: none; font-size: 13px; font-weight: 500; padding: 10px 14px;
+}
+.arrow-up.arrow-up { position: fixed; right: 25px; width: 35px; height: 36px; }
+.delete-note { padding: 6px 10px; margin-right: 8px; font-size: 12px; }
+
+/* Keep porcelain white on both sides of the coffee boundary. Text still flips
+   at the actual edge of the spill, independently of these solid controls. */
+.education-block, .skills-block {
+  z-index: auto; mix-blend-mode: normal; border-top: 0;
+}
+.education-block::before, .skills-block::before {
+  content: ''; position: absolute; top: 0; inset-inline: 0; z-index: 1;
+  border-top: 1px solid rgb(255 255 255 / .35); mix-blend-mode: difference;
+}
+.profile-panels, .skills-block h2, .skill-dots {
+  position: relative; z-index: 1; mix-blend-mode: difference; color: #f5f5f5;
+}
+.profile-panels { padding-top: 2px; }
+.skills-block h2 { min-height: 50px; }
+.skill-app {
+  position: relative; z-index: 3;
+  border: 1px solid #e3e1df; border-radius: 14px;
+  background: #fff; color: #171615;
+  box-shadow: 0 3px 8px rgb(0 0 0 / .06);
+}
+.profile-section button:focus-visible { outline-color: #fff; }
+
+/* Real pigment has an irregular tide line and a faint, absorbed inner wash. */
+.tone-ivory { --paper-tone: #eee5cf; --paper-ink: #45352a; --ring-opacity: .88; }
+.tone-lightblue { --paper-tone: #c5d9e3; --paper-ink: #253944; --ring-opacity: .75; }
+.tone-burgundy { --paper-tone: #76283b; --paper-ink: #fff0d9; --ring-opacity: .85; }
+.notes-section { grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr); align-items: center; }
+.note-board { gap: clamp(16px, 2.4vw, 36px); padding: 10px 3px 14px; }
+.note-paper {
+  --coaster-size: clamp(126px, 12vw, 170px);
+  width: var(--coaster-size); flex: 0 0 var(--coaster-size);
+  color: var(--paper-ink); --emphasis: var(--paper-ink);
+  border-radius: 18%; border: 1px solid rgb(255 255 255 / .22);
+  background-color: var(--paper-tone);
+  background-image: url('assets/stcop/coaster-fibre.svg'), linear-gradient(135deg, #fff3, #00000008 65%, #00000014);
+  box-shadow: inset 0 1px 1px #fff7, inset 0 -2px 2px #20110825,
+              0 2px 0 #8c796a, 0 4px 0 #51443d, 3px 8px 13px #0007;
+  transform: rotate(var(--paper-angle));
+  transition: transform 260ms ease, box-shadow 260ms ease;
+}
+.note-paper:nth-child(3n+2) { margin-top: 22px; }
+.note-paper:hover { transform: translateY(-6px) rotate(0deg); box-shadow: inset 0 1px 1px #fff7, 0 2px 0 #8c796a, 0 4px 0 #51443d, 5px 14px 22px #0008; }
+.coaster-ring {
+  inset: 4%; border: 0; border-radius: 0;
+  background: none center / contain no-repeat;
+  transform: rotate(var(--stain-angle, -22deg)); opacity: var(--ring-opacity);
+  mix-blend-mode: multiply; pointer-events: none;
+}
+.tone-burgundy .coaster-ring { mix-blend-mode: normal; filter: brightness(.55); }
+.note-paper::before {
+  content: ''; position: absolute; inset: 2px; border-radius: inherit;
+  border: 1px solid #ffffff12; pointer-events: none;
+}
+.note-paper .paper-author { font-size: 13px; max-width: 90%; overflow-wrap: anywhere; font-weight: 500; text-shadow: 0 1px 1px #ffffff14; }
+.note-paper.empty .paper-author { font-size: 27px; font-weight: 300; opacity: .65; }
+.paper-lines { display: none; }
+.note-detail {
+  position: relative; color: var(--paper-ink); --emphasis: var(--paper-ink);
+  background-color: var(--paper-tone); background-image: url('assets/stcop/coaster-fibre.svg');
+  border-radius: 18px; margin: 10px; padding: clamp(28px, 4vw, 50px);
+}
+.note-detail::before {
+  content: ''; position: absolute; width: 190px; height: 190px; top: 12px; right: 10px;
+  background: none center / contain no-repeat;
+  opacity: .25; mix-blend-mode: multiply; pointer-events: none;
+}
+.note-detail > * { position: relative; }
+.note-detail h2 { font-size: 23px; }
+.note-message { font-size: 15px; }
+.note-color-picker { gap: 22px; padding-block: 3px; }
+.paper-tone { width: 34px; height: 32px; border: 0; outline: none; }
+.paper-tone::before { content: ''; position: absolute; inset: 5px; border-radius: 3px 3px 6px 6px; background: var(--paper-tone); }
+.paper-tone.selected { transform: translateY(-4px); }
+.paper-tone:focus-visible { outline: 2px solid var(--ivory); outline-offset: 5px; }
+
+/* The footer belongs to the same dark surface as the contact section. */
+.contact-section { padding-bottom: 0; }
+.contact-section footer {
+  position: relative; z-index: 1; color: var(--ivory); --emphasis: var(--ivory);
+  padding: 25px 0 max(25px, env(safe-area-inset-bottom));
+  border-top: 1px solid rgb(255 255 255 / .25); background: transparent;
+}
+.wordmark .brand-op { color: var(--wine); }
+.footer-wordmark .brand-op { color: inherit; }
+
+@media (max-width: 820px) {
+  .notes-section { grid-template-columns: 1fr; gap: 28px; }
+  .note-board { gap: 26px; }
+  .work-heading { grid-template-columns: 1fr; row-gap: 12px; }
+  .work-heading h2 { grid-row: 1; }
+  .work-heading .filters { grid-row: 2; }
+}
+@media (max-width: 640px) {
+  .site-header nav { background: transparent; border: 0; -webkit-backdrop-filter: none; backdrop-filter: none; gap: 15px; padding-block: 20px; }
+  .site-header nav a { min-height: 38px; min-width: 97px; justify-content: center; font-size: 12px; }
+  .menu-toggle { width: 34px; height: 34px; margin-right: 8px; gap: 4px; }
+  .menu-toggle span { width: 16px; height: 1px; }
+  .filters { gap: clamp(5px, 1.5vw, 10px); margin: 0; flex-wrap: nowrap; }
+  .filters button { padding-inline: 0; font-size: clamp(12.5px, 3.55vw, 14px); min-height: 44px; }
+  .skill-app { border-radius: 12px; }
+  .skills { justify-content: space-between; max-width: 400px; }
+  .note-board { gap: 16px; justify-content: center; }
+  .note-paper { --coaster-size: clamp(96px, 25vw, 144px); }
+  .note-paper:nth-child(3n+2) { margin-top: 16px; }
+  .contact-section footer { flex-wrap: wrap; gap: 20px; padding-block: 24px; }
+  .contact-section footer > span { order: 3; flex-basis: 100%; font-size: 10px; opacity: .65; }
+  .footer-wordmark { font-size: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .note-paper, .project-open-mark { transition: none; }
+}

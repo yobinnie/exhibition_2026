@@ -1,0 +1,115 @@
+/* Desktop project details keep their context beside an independently scrolling
+   reading column. Note dialogs and the existing phone layout remain untouched. */
+@media (min-width:641px) {
+ #project-dialog.is-project-detail {
+  width:min(1320px,calc(100vw - 80px));max-width:none;
+  height:min(86dvh,900px);max-height:calc(100dvh - 48px);
+  padding:0;overflow:hidden;
+ }
+ #project-dialog.is-project-detail > .close-dialog {
+  position:absolute;top:8px;right:8px;z-index:10;margin:0;
+ }
+ #project-dialog.is-project-detail > #dialog-content {
+  height:100%;min-height:0;overflow:hidden;
+ }
+ #project-dialog.is-project-detail .detail-layout {
+  display:grid;grid-template-columns:clamp(250px,23vw,300px) minmax(0,1fr);
+  height:100%;min-height:0;padding:0;overflow:hidden;
+ }
+ #project-dialog.is-project-detail .project-sidebar {
+  min-width:0;min-height:0;height:100%;padding:38px 28px 40px;
+  border-right:1px solid rgb(238 245 249 / .22);
+  overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;
+ }
+ #project-dialog.is-project-detail .project-main {
+  min-width:0;min-height:0;height:100%;
+  padding:60px clamp(26px,3.3vw,52px) 48px;
+  overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;
+ }
+ #project-dialog.is-project-detail .project-sidebar .project-tags {
+  margin-bottom:14px;font-size:10px;letter-spacing:.07em;
+ }
+ #project-dialog.is-project-detail .project-sidebar .project-detail-title {
+  font-size:24px;line-height:1.16;letter-spacing:-.035em;
+  overflow-wrap:anywhere;
+ }
+ #project-dialog.is-project-detail .project-sidebar .project-title-ko {
+  font-size:13px;line-height:1.55;margin-top:10px;
+ }
+ #project-dialog.is-project-detail .project-sidebar .project-started {
+  font-size:11px;line-height:1.6;margin:14px 0 26px;
+ }
+ #project-dialog.is-project-detail .project-summary-cover {
+  display:block;width:100%;height:auto;max-width:100%;
+  aspect-ratio:auto!important;margin:26px 0 0;background:transparent;
+ }
+ #project-dialog.is-project-detail .project-summary-cover .project-cover {
+  display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;
+ }
+ #project-dialog.is-project-detail .project-sidebar .project-copy {
+  max-width:none;margin:24px 0 0;gap:20px;
+ }
+ #project-dialog.is-project-detail .project-sidebar .project-actions {
+  display:flex;flex-direction:column;align-items:flex-start;
+  margin:32px 0;
+ }
+ #project-dialog.is-project-detail .project-actions :is(.project-visit,.related-project-link) {
+  margin:0;max-width:100%;
+ }
+ #project-dialog.is-project-detail .project-sidebar .project-actions + .project-copy {
+  margin-top:0;
+ }
+ #project-dialog.is-project-detail .project-sidebar .project-description {
+  font-size:12.5px;line-height:1.8;white-space:normal;
+  word-break:keep-all;overflow-wrap:anywhere;
+ }
+ #project-dialog.is-project-detail .project-main > .project-main-cover {
+  display:block;width:min(100%,860px);height:auto;max-width:100%;
+  aspect-ratio:auto!important;margin:0 auto 32px;background:transparent;
+ }
+ #project-dialog.is-project-detail .project-main-cover .project-cover {
+  display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;
+ }
+ #project-dialog.is-project-detail .project-main .project-visual-gallery {
+  display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;
+  width:min(100%,634px);margin:0 auto;gap:24px;
+ }
+ #project-dialog.is-project-detail .project-visual-gallery .project-support-link {
+  width:100%;max-width:100%;
+ }
+ #project-dialog.is-project-detail .project-main > .project-pages {
+  margin-top:0;
+ }
+ #project-dialog.is-project-detail .project-main .project-artwork {
+  display:block;width:min(100%,720px);height:auto;aspect-ratio:auto!important;
+  margin:0 auto;background:transparent;
+ }
+ #project-dialog.is-project-detail .project-main .project-artwork .project-cover {
+  display:block;width:100%;height:auto;max-width:100%;
+  aspect-ratio:auto;object-fit:contain;transform:none;
+ }
+ #project-dialog.is-project-detail [data-project="dot-game-cat"] .project-artwork {
+  width:min(100%,400px);max-width:100%;
+ }
+ #project-dialog.is-project-detail [data-project="kyobo"] .project-artwork {
+  width:min(100%,880px);max-width:100%;
+ }
+ #project-dialog.is-project-detail .project-main .exhibition-section {
+  width:min(100%,720px);margin:84px auto 0;
+ }
+ #project-dialog.is-project-detail .project-main .exhibition-section h3 {
+  font-size:22px;margin-bottom:22px;
+ }
+ #project-dialog.is-project-detail .project-main .exhibition-photo {
+  width:min(100%,720px);height:auto;margin-inline:auto;
+ }
+}
+@media (min-width:641px) and (max-width:900px) {
+ #project-dialog.is-project-detail {width:calc(100vw - 40px);}
+ #project-dialog.is-project-detail .detail-layout {
+  grid-template-columns:210px minmax(0,1fr);
+ }
+ #project-dialog.is-project-detail .project-sidebar {padding:38px 20px 32px;}
+ #project-dialog.is-project-detail .project-sidebar .project-detail-title {font-size:21px;}
+ #project-dialog.is-project-detail .project-main {padding:60px 24px 36px;}
+}

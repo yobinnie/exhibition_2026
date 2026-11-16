@@ -1,0 +1,29 @@
+/* One faint rule spans both profile columns, including their shared gutter. */
+.profile-details { position: relative; }
+.profile-details::before {
+  content: '';
+  position: absolute;
+  inset: 0 var(--page-inset) auto;
+  z-index: 1;
+  border-top: 1px solid rgb(255 255 255 / .2);
+  mix-blend-mode: difference;
+  pointer-events: none;
+}
+.education-block::before,
+.skills-block::before { content: none; }
+
+/* Keep the white porcelain tiles, with a slightly quieter scale and shadow. */
+.skills { --tile: clamp(42px, 4.32vw, 55px); }
+.skill-app {
+  border: 0;
+  font-size: clamp(17px, 1.48vw, 21px);
+  box-shadow: 0 3px 8px rgb(0 0 0 / .04);
+}
+.skill-app-figma { font-size: clamp(12.5px, 1.05vw, 14.8px); }
+
+@media (forced-colors: active) {
+  .profile-details::before {
+    border-top-color: CanvasText;
+    mix-blend-mode: normal;
+  }
+}

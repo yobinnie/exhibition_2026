@@ -1,0 +1,31 @@
+/* The corrected artwork ratio applies at every size, without cropping. */
+.project-dialog-body.is-graphic .dialog-image.original-artwork {height:auto;aspect-ratio:auto;background:transparent;}
+.project-dialog-body.is-graphic .dialog-image.original-artwork .project-cover {height:auto;object-fit:contain;}
+.project-dialog-body .exhibition-section {margin-top:clamp(64px,6vw,88px);}
+.exhibition-section h3 {margin-bottom:22px;}
+
+@media (max-width:640px) {
+ /* Flatten the desktop columns to retain the existing mobile reading order. */
+ .detail-layout {display:flex;flex-direction:column;}
+ .project-sidebar,.project-main {display:contents;}
+ .detail-layout .project-tags {order:0;}
+ .detail-layout .project-detail-title {order:1;}
+ .detail-layout .project-started {order:2;}
+ .detail-layout .project-subtitle {order:3;}
+ .detail-layout .project-summary-cover,.detail-layout .project-artwork {order:4;}
+ .detail-layout .project-actions {order:5;display:flex;flex-direction:column;align-items:flex-start;margin:28px 0 0;}
+ .detail-layout .project-actions :is(.project-visit,.related-project-link) {margin:0;max-width:100%;}
+ .detail-layout .project-copy {order:6;}
+ .detail-layout .project-actions + .project-copy {margin-top:28px;}
+ .detail-layout .project-visual-gallery {order:7;}
+ .detail-layout .project-pages {order:8;}
+ .detail-layout .exhibition-section {order:9;}
+ .detail-layout .project-main-cover {display:none!important;}
+ /* Flex ordering must not add the adjacent block margins a second time. */
+ .detail-layout .project-summary-cover {margin-top:0;margin-bottom:0;}
+ .detail-layout.is-graphic .project-artwork {margin-top:2px;margin-bottom:0;}
+ .detail-layout .project-pages {margin-top:0;}
+ .detail-layout .project-visual-gallery {width:100%;max-width:634px;justify-self:auto;}
+ .detail-layout .project-visual-gallery .project-support-link {width:100%;}
+ .detail-layout .exhibition-section {margin-top:40px;}
+}

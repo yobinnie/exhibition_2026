@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+<defs><filter id="paper" x="-15%" y="-15%" width="130%" height="130%"><feTurbulence baseFrequency=".055" numOctaves="3" seed="34" result="g"/><feDisplacementMap in="SourceGraphic" in2="g" scale="3.6"/><feGaussianBlur stdDeviation=".55"/></filter><radialGradient id="wash"><stop stop-color="#b18345" stop-opacity=".09"/><stop offset=".83" stop-color="#b18345" stop-opacity=".15"/><stop offset="1" stop-color="#a77834" stop-opacity=".25"/></radialGradient></defs>
+<g filter="url(#paper)">
+<path d="M60 50C72 37 92 39 100 53C103 63 96 74 89 81C79 91 82 104 73 111C62 117 40 110 39 94C36 82 49 62 60 50Z" fill="url(#wash)"/>
+<path d="M125 122C133 112 148 111 156 122C164 131 176 128 184 137C195 150 189 166 182 172C170 183 155 177 151 187C147 200 132 205 118 195C105 184 109 173 116 164C125 155 115 136 125 122Z" fill="url(#wash)"/>
+<path d="M118 195C131 206 149 199 151 189C155 177 170 184 183 172" fill="none" stroke="#ad7a38" stroke-width=".9" opacity=".22"/>
+<path d="M175 54C191 65 202 85 202 110" fill="none" stroke="#bc945b" stroke-width="9" stroke-linecap="round" opacity=".10"/>
+<ellipse cx="92" cy="124" rx="5" ry="7" fill="#b18950" opacity=".16"/><ellipse cx="187" cy="186" rx="4.3" ry="3.8" fill="#ae7d3e" opacity=".18"/><circle cx="52" cy="139" r="2.4" fill="#b18950" opacity=".18"/>
+</g></svg>

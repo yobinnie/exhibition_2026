@@ -1,0 +1,7 @@
+/* The section titles borrow the exact pale blue of the profile paper. */
+#work-title,
+#archive-title,
+#notes-title,
+#contact-title {
+  color: var(--profile-paper, #eef5f9);
+}

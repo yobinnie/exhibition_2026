@@ -1,0 +1,17 @@
+/* Self-hosted Korean interface face. Latin stays in the Helvetica family. */
+@font-face {
+  font-family: "Pretendard";
+  src: url("assets/fonts/PretendardVariable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 45 920;
+  font-display: swap;
+}
+
+/* Shared interface type; artwork and the authored film keep their own lettering. */
+:root {
+  --sans: "Helvetica Neue", Helvetica, Arial, "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", "Noto Sans CJK KR", "Malgun Gothic", sans-serif;
+}
+
+/* Hide the rails, leaving native wheel, touch and keyboard scrolling intact. */
+* { scrollbar-width: none; -ms-overflow-style: none; }
+*::-webkit-scrollbar { display: none; width: 0; height: 0; }

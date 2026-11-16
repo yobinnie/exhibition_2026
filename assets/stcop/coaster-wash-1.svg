@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+<defs><filter id="paper" x="-15%" y="-15%" width="130%" height="130%"><feTurbulence baseFrequency=".045" numOctaves="3" seed="11" result="g"/><feDisplacementMap in="SourceGraphic" in2="g" scale="4"/><feGaussianBlur stdDeviation=".48"/></filter></defs>
+<g filter="url(#paper)">
+<path d="M48 104C37 79 61 43 95 34C126 23 163 34 187 61C214 93 208 130 191 157C176 180 151 188 128 188C101 189 83 180 78 167C74 158 85 150 94 156C113 168 138 170 160 157C186 141 193 111 181 87C169 63 145 51 120 52C90 52 70 70 68 91C68 106 55 115 48 104Z" fill="#b58a4a" opacity=".19"/>
+<path d="M46 103C38 78 61 42 96 33C132 22 170 39 190 67C211 98 207 128 191 156C177 180 151 191 125 189" fill="none" stroke="#a47a43" stroke-width="1.5" opacity=".25"/>
+<path d="M75 166C86 181 111 187 131 184C160 180 179 164 187 145" fill="none" stroke="#a07338" stroke-width="3.7" opacity=".10"/>
+<path d="M52 189C55 178 67 180 73 189C78 201 73 208 63 207C52 207 48 199 52 189Z" fill="#b98c4b" opacity=".19"/>
+<ellipse cx="202" cy="147" rx="3" ry="4" fill="#bc9458" opacity=".23"/><circle cx="197" cy="158" r="1.6" fill="#9f713c" opacity=".28"/>
+</g></svg>

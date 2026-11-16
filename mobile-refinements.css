@@ -1,0 +1,32 @@
+/* A quiet initial focus inside the dialog; keyboard controls retain their rings. */
+#dialog-content h2[tabindex="-1"]:focus {outline:none;}
+.close-dialog.close-dialog {
+  min-inline-size:44px;min-block-size:44px;width:max-content;
+  padding:8px 10px;font-size:12px;line-height:1;margin:4px 8px 0 auto;
+  touch-action:manipulation;
+}
+.close-dialog:focus:not(:focus-visible) {outline:none;}
+.dialog-image[href],.project-visit,.related-project-link,.project-page-link {touch-action:manipulation;}
+.compose-note :is(input,textarea):focus {outline:none;border-bottom-color:#fff;box-shadow:0 1px 0 #fff;}
+@media(max-width:640px){
+  .site-header .wordmark {transition:opacity 150ms ease,visibility 150ms ease,transform 150ms ease;}
+  .site-header.is-scrolled .wordmark {opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-4px);}
+  .portrait-composition {
+    width:min(69vw,250px);max-width:100%;touch-action:manipulation;cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .portrait-composition.sip-ready .portrait-rest {opacity:1;}
+  .portrait-composition.sip-ready .portrait-sip {opacity:0;}
+  .portrait-composition.sip-ready.is-sipping .portrait-rest {opacity:0;}
+  .portrait-composition.sip-ready.is-sipping .portrait-sip {opacity:1;}
+  .portrait-composition:focus-visible {outline:1px solid currentColor;outline-offset:6px;}
+  .filters {column-gap:16px;row-gap:4px;flex-wrap:wrap;max-width:100%;}
+  .filters button {padding-inline:2px;font-size:13px;min-height:44px;}
+  .close-dialog.close-dialog {font-size:11px;top:4px;}
+  #project-dialog {max-height:calc(100dvh - 28px);width:calc(100vw - 24px);}
+}
+@media(max-width:360px){
+  .filters {display:grid;grid-template-columns:repeat(2,max-content);column-gap:22px;row-gap:0;}
+  .filters button {text-align:left;}
+}
+@media(prefers-reduced-motion:reduce){.site-header .wordmark{transition:none;}}

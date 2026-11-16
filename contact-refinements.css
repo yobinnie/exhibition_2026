@@ -1,0 +1,18 @@
+.contact-information .contact-person {
+  margin-block: clamp(20px, 2.4vw, 32px) 4px;
+  font: 500 clamp(17px, 1.4vw, 20px)/1.5 var(--sans);
+  letter-spacing: -.025em;
+}
+
+.contact-person + .contact-email { margin-top: 0; }
+
+.contact-information .contact-phone {
+  display: inline-block;
+  margin-top: 2px;
+  padding-block: 5px;
+  font: 400 clamp(15px, 1.2vw, 17px)/1.45 var(--sans);
+  font-variant-numeric: tabular-nums;
+  color: var(--coffee-secondary);
+}
+
+.contact-phone:hover { text-decoration: underline; text-underline-offset: .2em; }

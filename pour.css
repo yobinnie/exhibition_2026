@@ -1,0 +1,243 @@
+:root {
+  --espresso: #131312;
+  --wine: #a54263;
+  --on-coffee: #fff;
+  --coffee-secondary: #d3d0ce;
+  --coffee-rule: rgb(255 255 255 / .3);
+  --page-inset: max(var(--gutter), calc((100% - 1390px) / 2));
+}
+
+/* One translucent pane; the baseline stays sharp as the page moves under it. */
+.site-header {
+  --emphasis: #171310;
+  color: #191512;
+  border-bottom: 1px solid rgb(37 26 21 / .22);
+  background: rgb(255 255 255 / .72);
+  -webkit-backdrop-filter: blur(18px) saturate(.86);
+  backdrop-filter: blur(18px) saturate(.86);
+}
+.wordmark { display: inline-flex; align-items: baseline; font-weight: 650; letter-spacing: -.066em; }
+.wordmark .brand-op { color: var(--wine); letter-spacing: -.073em; }
+.site-header nav a:focus-visible, .wordmark:focus-visible { outline-color: var(--wine); }
+
+/* The two passes share the very same fluid silhouette. White difference type
+   on the black pass flips at its actual edge. Lighten then tints only the dark
+   pool, so crossing a letter never turns it into a muddy intermediate colour. */
+.profile-section {
+  position: relative; isolation: isolate; background: #fff;
+  display: flex; flex-direction: column;
+  min-height: calc(100vh - var(--header-height));
+  min-height: calc(100svh - var(--header-height));
+}
+.spill-defs { position: absolute; overflow: hidden; pointer-events: none; }
+.spill-pass { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; }
+.spill-ground { z-index: 0; fill: #000; }
+.spill-color { z-index: 2; mix-blend-mode: lighten; fill: var(--espresso); }
+.profile-section .profile-intro, .profile-section .profile-details { background: transparent; }
+.profile-intro {
+  flex: 1 0 auto;
+  grid-template-columns: minmax(0, 1.44fr) minmax(245px, .96fr);
+  column-gap: clamp(32px, 5.7vw, 98px);
+  min-height: clamp(400px, 58svh, 670px);
+  padding: clamp(40px, 7svh, 92px) var(--page-inset) clamp(36px, 6svh, 76px);
+}
+.profile-details { padding: 0 var(--page-inset) clamp(64px, 10svh, 112px); }
+.profile-identity, .education-block, .skills-block {
+  position: relative; z-index: 1; mix-blend-mode: difference;
+  --emphasis: #f5f5f5;
+  --line: rgb(255 255 255 / .37);
+  color: #f5f5f5;
+}
+.profile-identity h1 span { color: inherit; }
+.identity-line time, .profile-tabs button { color: #ababab; }
+.skill-dots i { border-color: #bcbcbc; }
+.skill-dots i.filled { background: var(--emphasis); border-color: var(--emphasis); }
+/* Both panels size the same grid cell, even when their dates wrap on a phone.
+   The inactive panel is inert and invisible, but still contributes its height. */
+.profile-panels { display: grid; grid-template-columns: minmax(0, 1fr); }
+.profile-panels > .profile-panel { grid-area: 1 / 1; min-width: 0; align-self: start; }
+.profile-panels > .profile-panel[aria-hidden="true"] { visibility: hidden; pointer-events: none; }
+.profile-tabs { gap: clamp(12px, 2vw, 24px); }
+.profile-tabs button {
+  display: inline-flex; align-items: center; gap: 6px;
+  white-space: nowrap; font-weight: 500;
+}
+.profile-tabs button[aria-selected="true"] { text-decoration: none; }
+.profile-tabs button::before {
+  content: ""; width: 5px; height: 5px; flex: none;
+  background: currentColor; border-radius: 50%; opacity: 0;
+}
+.profile-tabs button[aria-selected="true"]::before { opacity: 1; }
+/* Set the monograms on equal tiles, with their separate rating centred below. */
+.skills {
+  --tile: clamp(45px, 4.7vw, 60px);
+  display: grid; grid-template-columns: repeat(5, minmax(0, var(--tile)));
+  justify-content: space-between; gap: clamp(5px, 1.2vw, 17px);
+  max-inline-size: 420px;
+}
+.skill { min-width: 0; justify-items: center; gap: 8px; }
+.skill-app {
+  display: grid; place-items: center; inline-size: 100%; aspect-ratio: 1;
+  border: 1px solid rgb(255 255 255 / .58); border-radius: 3px;
+  color: var(--emphasis); font-weight: 550; font-size: clamp(18px, 1.6vw, 23px);
+  line-height: 1; letter-spacing: -.035em; text-align: center;
+}
+.skill-app-figma { font-size: clamp(13px, 1.14vw, 16px); letter-spacing: -.025em; }
+.profile-section button:focus-visible { outline-color: #fff; }
+.opening-copy { margin: 0 0 clamp(25px, 4.3svh, 52px); }
+.opening-lead, .opening-support {
+  word-break: keep-all; overflow-wrap: break-word; text-wrap: balance;
+  text-align: left;
+}
+.opening-lead {
+  max-width: 17em; font-size: clamp(30px, 3.28vw, 51px);
+  font-weight: 600; line-height: 1.28; letter-spacing: -.055em;
+}
+.opening-support {
+  max-width: 29em; margin-block-start: clamp(14px, 1.3vw, 21px);
+  font-size: clamp(16px, 1.35vw, 20px); font-weight: 400;
+  letter-spacing: -.026em; line-height: 1.62; color: #b5b5b5;
+}
+/* Reserve the paragraph at full width; reveal it in one paint after the lead. */
+.opening-copy.awaiting-support .opening-support { opacity: 0; }
+.copy-reader {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}
+.copy-word { display: inline-block; white-space: nowrap; }
+.copy-glyph { position: relative; }
+.copy-glyph.pending { visibility: hidden; }
+.copy-glyph.pen::after {
+  content: ''; position: absolute; inset-inline-end: -.07em; bottom: .07em;
+  width: max(1px, .037em); height: .85em; background: currentColor; pointer-events: none;
+}
+.portrait-composition {
+  z-index: 3; background: transparent;
+  width: min(100%, 410px); justify-self: center;
+}
+.portrait-sip { background: transparent; }
+.portrait-rest { transition: opacity 150ms ease-in-out; }
+@media (hover: hover) and (pointer: fine) {
+  .portrait-composition.sip-ready:hover .portrait-rest { opacity: 0; }
+}
+
+/* A single title style also covers headings inserted when opening a project. */
+:where(h1, h2, h3, h4, h5, h6, [role="heading"]),
+.site-header nav a, .profile-tabs button, .filters button,
+.dot-cover-type, .plyve-cover-type {
+  font-family: var(--sans); text-transform: uppercase;
+}
+.site-header nav a, .filters button { letter-spacing: .025em; }
+.work-ending { white-space: nowrap; }
+.project-title-ko, .project-subtitle { text-transform: none; }
+/* One reservoir below the profile, including the notes and the contact sheet. */
+.work-section, .notes-section, .contact-section, #project-dialog {
+  --emphasis: var(--on-coffee);
+  --ink: var(--on-coffee);
+  --line: var(--coffee-rule);
+  background: var(--espresso);
+  color: var(--on-coffee);
+}
+.work-section { border-top: 0; }
+.work-heading sup, .project-category, .note-count, .contact-phone, .project-tags { color: var(--coffee-secondary); }
+.submit, .project-visit, .related-project-link {
+  background: #fff; color: var(--espresso);
+}
+.submit:hover, .project-visit:hover, .related-project-link:hover { background: #eae5e1; color: var(--espresso); }
+.notes-section, .contact-section { position: relative; }
+.notes-section::before, .contact-section::before {
+  content: ''; position: absolute; top: 0; inset-inline: var(--page-inset); border-top: 1px solid var(--coffee-rule);
+}
+.note-paper, .note-detail { color: #211a16; --emphasis: #211a16; }
+.compose-note {
+  background: transparent; padding: clamp(15px, 2.4vw, 34px) 0 0;
+  border-top-color: var(--coffee-rule); box-shadow: none;
+}
+.compose-note :is(input, textarea)::placeholder { color: #ccc9c6; opacity: 1; }
+.compose-note :is(input, textarea) { border-color: rgb(255 255 255 / .46); caret-color: #fff; }
+.paper-tone { border-color: var(--espresso); }
+.paper-tone.selected { outline-color: #fff; }
+:is(.work-section, .notes-section, .contact-section, #project-dialog) :focus-visible { outline-color: #fff; }
+.note-detail :focus-visible { outline-color: #211a16 !important; }
+.arrow-up { background: #fff; color: var(--espresso); border: 1px solid rgb(23 22 21 / .35); }
+#project-dialog { border: 1px solid rgb(255 255 255 / .45); }
+.close-dialog { background: #fff; color: var(--espresso); border-color: transparent; }
+.profile-section ::selection { background: #888; color: #fff; }
+:is(.work-section, .notes-section, .contact-section, #project-dialog) ::selection { background: #fff; color: var(--espresso); }
+
+@media (max-width: 820px) and (min-width: 641px) {
+  .profile-intro { grid-template-columns: minmax(0, 1.30fr) minmax(220px, .94fr); column-gap: 24px; }
+}
+@media (max-width: 640px) {
+  .profile-intro {
+    grid-template-columns: minmax(0, 1fr); gap: 24px;
+    min-height: auto; padding: clamp(35px, 6svh, 58px) var(--gutter) 28px;
+  }
+  .opening-copy { margin-bottom: 28px; }
+  .opening-lead { max-width: 16em; font-size: clamp(25px, 6.7vw, 33px); line-height: 1.32; }
+  .opening-support { max-width: 27em; font-size: 15px; }
+  .portrait-composition { width: min(calc(100% + 12px), 320px); max-width: calc(100vw - 24px); }
+  .profile-details { padding-bottom: clamp(70px, 11svh, 120px); }
+  .site-header nav {
+    background: rgb(253 251 250 / .89);
+    -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+  }
+}
+@media (max-width: 380px) {
+  .work-heading h2 { font-size: 29px; }
+  .filters button { padding-inline: 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .copy-glyph.pen::after { display: none; }
+  .portrait-rest { transition: none; }
+}
+/* Vertical phone layouts use one opaque paint layer for both colors, instead
+   of overlapping antialiased SVG <use> edges on a very tall composited layer. */
+.mobile-pour-surface {
+  display: none; position: absolute; inset: 0; width: 100%; height: 100%;
+  z-index: 0; pointer-events: none; user-select: none;
+}
+.profile-section.mobile-pour .mobile-pour-surface:not([hidden]) { display: block; }
+.profile-section.mobile-pour .spill-pass { display: none; }
+.profile-section.mobile-pour.mobile-pour-full { background: var(--espresso); }
+.profile-section.mobile-pour {
+  --mobile-profile-ink: #211f1d;
+  --mobile-profile-muted: #55534f;
+  --mobile-ink-back: var(--profile-paper, #eef5f9);
+}
+.profile-section.mobile-pour :is(.profile-identity, .education-block, .skills-block,
+    .profile-tabs, .profile-panels, .skills-block h2, .skill-dots),
+.profile-section.mobile-pour :is(.education-block, .skills-block)::before {
+  mix-blend-mode: normal;
+}
+.profile-section.mobile-pour .mobile-coffee-ink {
+  --mobile-profile-ink: #f5f4ef;
+  --mobile-profile-muted: #c9c6c1;
+  --mobile-ink-back: var(--espresso);
+}
+/* Give every sampled piece of type its own light-mode default, including the
+   rare moment where a label and the section rule straddle different sides. */
+.profile-section.mobile-pour :is(.profile-tabs button, .timeline dt, .timeline dd, .skill-dots,
+    .skills-block h2):not(.mobile-coffee-ink) {
+  --mobile-profile-ink: #211f1d;
+  --mobile-profile-muted: #55534f;
+  --mobile-ink-back: var(--profile-paper, #eef5f9);
+}
+.profile-section.mobile-pour :is(.opening-lead, #profile-title, .identity-line strong,
+    .design-fields, .profile-tabs button[aria-selected="true"], .timeline dd, .skills-block h2, .skill-dots) {
+  color: var(--mobile-profile-ink);
+}
+.profile-section.mobile-pour :is(.opening-support, .identity-line time, .profile-tabs button[aria-selected="false"], .timeline dt) {
+  color: var(--mobile-profile-muted);
+}
+.profile-section.mobile-pour .mobile-ink-edge {
+  text-shadow: 0 0 2px var(--mobile-ink-back), 0 0 1px var(--mobile-ink-back);
+}
+.profile-section.mobile-pour .skill-dots i { border-color: currentColor; }
+.profile-section.mobile-pour .skill-dots i.filled { background: currentColor; }
+.profile-section.mobile-pour :is(.education-block, .skills-block)::before { border-top-color: var(--mobile-profile-muted); opacity: .47; }
+@media (forced-colors: active) {
+  .spill-pass, .copy-glyph.pen::after, .profile-section.mobile-pour .mobile-pour-surface { display: none !important; }
+  .profile-section.mobile-pour { background: Canvas; }
+  .profile-identity, .education-block, .skills-block { mix-blend-mode: normal; color: CanvasText; }
+}

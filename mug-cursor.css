@@ -1,0 +1,25 @@
+.teaspoon-cursor { display: none; }
+@media (hover: hover) and (pointer: fine) and (forced-colors: none) {
+  .teaspoon-cursor {
+    display: block; position: fixed; left: 0; top: 0;
+    width: 34px; height: 34px; z-index: 2147483647;
+    pointer-events: none; user-select: none; contain: layout style;
+    visibility: hidden;
+  }
+  .teaspoon-cursor.is-visible { visibility: visible; }
+  .teaspoon-cursor > .teaspoon-photo {
+    display: block; width: 100%; height: 100%; max-width: none; object-fit: contain;
+    transform: rotate(0deg); transform-origin: 88% 88%;
+    transition: transform 170ms cubic-bezier(.12,.74,.28,1);
+  }
+  .teaspoon-cursor.is-pressed > .teaspoon-photo {
+    transform: rotate(-70deg);
+    transition: transform 90ms cubic-bezier(.48,.04,.74,.58);
+  }
+  html.teaspoon-pointer-active, html.teaspoon-pointer-active *,
+  html.teaspoon-pointer-active dialog::backdrop { cursor: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .teaspoon-cursor > .teaspoon-photo,
+  .teaspoon-cursor.is-pressed > .teaspoon-photo { transform: none; transition: none; }
+}

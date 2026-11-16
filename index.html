@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+ <meta name="theme-color" content="#eee9dd">
+ <meta name="description" content="Spill the coffee [on purpose] — 조예빈의 디자인 포트폴리오.">
+ <title>Spill the coffee [on purpose] — CHO YEBIN</title>
+ <link rel="icon" href="assets/stcop/favicon.svg" type="image/svg+xml">
+ <link rel="stylesheet" href="type.css">
+<link rel="stylesheet" href="coffee.css">
+ <link rel="preload" as="image" href="assets/stcop/landing-open.png">
+</head>
+<body data-phase="loading">
+ <iframe id="main-preview" class="main-preview" src="showroom.html" title="조예빈 포트폴리오" tabindex="-1" aria-hidden="true" inert></iframe>
+ <main id="coffee-stage" class="coffee-stage" aria-labelledby="coffee-title">
+  <img class="fallback-scene" src="assets/stcop/landing-open.png" alt="아이보리 벽과 푸른 테이블 위, 커피가 담긴 흰 머그잔과 맥북" fetchpriority="high">
+  <canvas id="scene-canvas" class="scene-layer" aria-hidden="true"></canvas>
+  <h1 id="coffee-title" class="sr-only">Spill the coffee [on purpose]</h1>
+  <video id="spill-film" src="assets/stcop/landing-spill.mp4" preload="auto" playsinline disablepictureinpicture aria-hidden="true"></video>
+  <button id="mug-trigger" class="mug-trigger" type="button" aria-label="커피 엎기" aria-disabled="true"></button>
+  <p id="phase-status" class="sr-only" role="status" aria-live="polite"></p>
+ </main>
+ <noscript><meta http-equiv="refresh" content="0;url=showroom.html"></noscript>
+ <script defer src="coffee.js"></script>
+</body>
+</html>
